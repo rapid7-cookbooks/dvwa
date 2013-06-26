@@ -13,12 +13,12 @@ Installs Damn Vulnerable Web Application to a XAMPP installation (recommended by
 * Ubuntu (Tested on 12.04)
 
 ## Attributes
-* Includes attributes from [xampp::default](). ***FIXME***
-* node[:dvwa][:dir] Where to install DVWA, defaults to /opt/lampp/htdocs
-* node[:dvwa][:flavor] The type of install to use, defaults to :xampp, alternatively use :apache2
-* node[:dvwa][:url] From where to install DVWA, defaults to http://downloads.sourceforge.net/project/dvwa/DVWA-1.0.7.zip
-* node[:dvwa][:version] What version of DVWA to install, defaults to 1.0.7
-* node[:dvwa][:zip_name] The name of the archive to install from, DVWA-1.0.7.zip
+* Includes attributes from [xampp::default](https://github.com/rapid7-cookbooks/xampp#attributes).
+* `node[:dvwa][:dir]` Where to install DVWA, defaults to /opt/lampp/htdocs
+* `node[:dvwa][:flavor]` The type of install to use, defaults to :xampp, alternatively use :apache2
+* `node[:dvwa][:url]` From where to install DVWA, defaults to http://downloads.sourceforge.net/project/dvwa/DVWA-1.0.7.zip
+* `node[:dvwa][:version]` What version of DVWA to install, defaults to 1.0.7
+* `node[:dvwa][:zip_name]` The name of the archive to install from, DVWA-1.0.7.zip
 
 ## Usage
 ### dvwa::default
