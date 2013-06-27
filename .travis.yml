@@ -2,8 +2,9 @@ language: ruby
 rvm:
   - 1.9.3
   - 2.0.0
-env:
- - "rubygems_version=latest-1.8.25"
+before_install:
+  - rvm rubygems 1.8.25
+  - echo "rubygems_version=latest-1.8.25" >> $rvm_path/user/db
 script:
   - bundle exec thor foodcritic
   - bundle exec rspec
