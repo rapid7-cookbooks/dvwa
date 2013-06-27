@@ -1,2 +1,2 @@
 metadata
-cookbook 'xampp', git: 'rapid7-cookbooks/xampp'
+cookbook 'xampp', git: 'https://github.com/rapid7-cookbooks/xampp.git'
