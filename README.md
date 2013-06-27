@@ -2,6 +2,13 @@
 ## Description
 Installs Damn Vulnerable Web Application to a XAMPP installation (recommended by the DVWA documentation).
 
+Run the following commands to get started with this cookbook:
+```ruby
+bundle install
+vagrant plugin install vagrant-berkshelf
+vagrant up
+```
+
 ## Cookbooks
 * apache2
 * mysql
