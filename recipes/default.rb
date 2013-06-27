@@ -7,4 +7,9 @@
 # All Rights Reserved - Do Not Redistribute
 #
 
-include_recipe 'dvwa::server'
+case node[:dvwa][:flavor]
+when :xampp
+  include_recipe 'dvwa::xampp'
+when :apache2, :standalone
+  include_recipe 'dvwa::standalone'
+end
