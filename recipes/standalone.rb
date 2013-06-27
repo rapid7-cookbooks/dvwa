@@ -39,14 +39,11 @@ bash 'install DVWA from zip' do
     rm -rf #{node[:dvwa][:dir]}/dvwa
     unzip -q #{Chef::Config[:file_cache_path]}/#{node[:dvwa][:zip_name]} -d #{node[:dvwa][:dir]}
   eos
+
+  notifies :reload, 'service[apache2]', :immediately
 end
 
 template '/var/www/dvwa/config/config.inc.php'
-
-# Restart Apache 2 and create/reset database
-service 'apache2' do
-  action :reload
-end
 
 # Execute an HTTP request to create/reset the MySQL databse
 # REVIEW: Should execute like: `curl --data 'create_db=Create+%2F+Reset+Database'

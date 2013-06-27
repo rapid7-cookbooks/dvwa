@@ -24,11 +24,8 @@ bash 'install_dvwa' do
     unzip -q #{node[:dvwa][:zip_name]} -d #{node[:dvwa][:dir]} &&
     rm -rf #{node[:dvwa][:dir]}/dvwa/.htaccess
   eos
-end
 
-# Restart Apache 2 and create/reset database
-service 'apache2' do
-  action :reload
+  notifies :reload, 'service[apache2]', :immediately
 end
 
 template '/var/www/dvwa/config/config.inc.php'

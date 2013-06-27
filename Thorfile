@@ -1,8 +1,9 @@
 # encoding: utf-8
 
-require 'berkshelf/thor'
 require 'bundler'
 require 'bundler/setup'
+
+require 'berkshelf/thor'
 require 'foodcritic'
 require 'thor/rake_compat'
 
@@ -14,5 +15,10 @@ class Default < Thor
   desc 'foodcritic', 'Lint Chef cookbooks'
   def foodcritic
     Rake::Task['foodcritic'].execute
+  end
+
+  desc 'chefspec', 'Run ChefSpec tests against the current cookbook', aliases: ['rspec', 'spec']
+  def chefspec
+    exec 'bundle exec rspec'
   end
 end
