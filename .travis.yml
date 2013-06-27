@@ -3,9 +3,8 @@ rvm:
   - 1.9.3
   - 2.0.0
 before_install:
-  - CORRECT_RUBY=`ruby -e "ENV['RUBY_VERSION'].include?('2.0.0') ? puts('Applying Ruby Gems tweak for 2.0.0 compatability') : exit(1)"`
-  - if [[ $CORRECT_RUBY ]]; then rvm rubygems 1.8.25; fi
-  - if [[ $CORRECT_RUBY ]]; then echo "rubygems_version=latest-1.8.25" >> $rvm_path/user/db; fi
+  - echo $RUBY_VERSION | grep '2.0.0'
+  - if [[ $? == 1 ]]; then rvm rubygems 1.8.25 && echo "rubygems_version=latest-1.8.25" >> $rvm_path/user/db; fi
 script:
   - bundle exec thor foodcritic
   - bundle exec rspec
