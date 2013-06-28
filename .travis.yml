@@ -1,8 +1,6 @@
 language: ruby
 rvm:
   - 1.9.3
-# - 2.0.0 # There's an issue with rubygems that causes the build to fail for Ruby 2.0.0
-#  I'm going to rip Ruby 2.0 until I can get the workaround to work w/ travis
 script:
   - bundle exec thor foodcritic
-  - bundle exec rspec
+  - bundle exec thor chefspec
