@@ -1,4 +1,4 @@
-# Damn Vulnerable Web Application [![Build Status](https://secure.travis-ci.org/rapid7-cookbooks/dvwa.png)](http://travis-ci.org/rapid7-cookbooks/dvwa)
+# Damn Vulnerable Web Application [![Build Status](https://secure.travis-ci.org/rapid7-cookbooks/dvwa.png)](http://travis-ci.org/rapid7-cookbooks/dvwa) [![Dependency Status](https://gemnasium.com/rapid7-cookbooks/dvwa.png)](https://gemnasium.com/rapid7-cookbooks/dvwa)
 ## Description
 Installs Damn Vulnerable Web Application to a XAMPP installation (recommended by the DVWA documentation).
 
