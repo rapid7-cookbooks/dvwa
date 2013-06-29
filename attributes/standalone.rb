@@ -7,12 +7,14 @@
 # All Rights Reserved - Do Not Redistribute
 #
 
-include_attribute 'mysql::server'
+if node.run_list.include?('dvwa::standalone')
+  include_attribute 'mysql::server'
 
-default[:mysql][:bind_address] = '127.0.0.1'
-default[:mysql][:server_debian_password] = 'msfadmin'
-default[:mysql][:server_root_password] = 'msfadmin'
-default[:mysql][:server_repl_password] = 'msfadmin'
+  default[:mysql][:bind_address] = '127.0.0.1'
+  default[:mysql][:server_debian_password] = 'msfadmin'
+  default[:mysql][:server_root_password] = 'msfadmin'
+  default[:mysql][:server_repl_password] = 'msfadmin'
 
-default[:mysql][:mod_ssl][:cipher_suite] = 'LOW:HIGH:MEDIUM:+EXP:+SHA1:+MD5:+LOW:+HIGH:+MEDIUM'
-default[:mysql][:mod_ssl][:protocol] = '+all'
+  default[:mysql][:mod_ssl][:cipher_suite] = 'LOW:HIGH:MEDIUM:+EXP:+SHA1:+MD5:+LOW:+HIGH:+MEDIUM'
+  default[:mysql][:mod_ssl][:protocol] = '+all'
+end

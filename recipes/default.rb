@@ -10,6 +10,6 @@
 case node[:dvwa][:flavor]
 when :xampp
   include_recipe 'dvwa::xampp'
-when :apache2, :standalone
+when :apache2, :server, :standalone
   include_recipe 'dvwa::standalone'
 end
