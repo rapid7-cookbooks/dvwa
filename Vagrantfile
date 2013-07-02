@@ -4,6 +4,7 @@
 Vagrant.configure('2') do |config|
   config.berkshelf.enabled = true
   config.omnibus.chef_version = :latest
+
   config.vm.define :standalone do |standalone_config|
     standalone_config.ssh.max_tries = 40
     standalone_config.ssh.timeout   = 120
