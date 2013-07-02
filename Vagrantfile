@@ -43,7 +43,7 @@ Vagrant.configure('2') do |config|
     xampp_config.vm.network :private_network, ip: '33.33.33.11'
 
     xampp_config.vm.provision :chef_solo do |chef|
-      chef.run_list = ['recipe[dvwa::xmapp]']
+      chef.run_list = ['recipe[dvwa::xampp]']
     end
   end
 end
