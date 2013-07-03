@@ -25,8 +25,10 @@ bash 'install_dvwa' do
     unzip -q #{Chef::Config[:file_cache_path]}/#{node[:dvwa][:zip_name]} -d #{node[:dvwa][:dir]}
     rm -rf #{Chef::Config[:file_cache_path]}/#{node[:dvwa][:zip_name]}
   eos
+end
 
-  notifies :reload, 'service[apache2]', :immediately
+lampp_service 'apache' do
+  action :restart
 end
 
 template "#{node[:dvwa][:dir]}/config/config.inc.php"
