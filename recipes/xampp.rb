@@ -27,7 +27,7 @@ bash 'install_dvwa' do
   eos
 end
 
-lampp_service 'apache' do
+xampp_service 'apache' do
   action :restart
 end
 
