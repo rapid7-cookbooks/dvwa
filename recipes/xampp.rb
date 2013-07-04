@@ -7,31 +7,31 @@
 # All Rights Reserved - Do Not Redistribute
 #
 
-include_recipe 'apt'
 include_recipe 'xampp'
-package 'unzip'
 
+package 'unzip'
 remote_file "#{Chef::Config[:file_cache_path]}/#{node[:dvwa][:zip_name]}" do
   source node[:dvwa][:url]
+  only_if { node[:dvwa][:overwrite] || !Dir.exists?(node[:dvwa][:dir]) }
 end
 
-bash 'install_dvwa' do
-  user 'root'
-  code <<-eos
-    if [[ -e #{node[:dvwa][:dir]}/* ]]; then
-      rm -rf #{node[:dvwa][:dir]}/*
-    fi
+zip_path = "#{Chef::Config[:file_cache_path]}/#{node[:dvwa][:zip_name]}"
 
-    unzip -q #{Chef::Config[:file_cache_path]}/#{node[:dvwa][:zip_name]} -d #{node[:dvwa][:dir]}
-    rm -rf #{Chef::Config[:file_cache_path]}/#{node[:dvwa][:zip_name]}
-  eos
+execute "unzip #{node[:dvwa][:zip_name]}" do
+  command "unzip -q #{Chef::Config[:file_cache_path]}/#{node[:dvwa][:zip_name]} -d #{node[:dvwa][:dir]}"
+  only_if { node[:dvwa][:overwrite] || !Dir.exists?(node[:dvwa][:dir])  }
+end
+
+file zip_path do
+  action :delete
+  only_if { !::File.exists? zip_path }
 end
 
 xampp_service 'apache' do
   action :restart
 end
 
-template "#{node[:dvwa][:dir]}/config/config.inc.php"
+template "#{node[:dvwa][:dir]}/dvwa/config/config.inc.php"
 
 package 'curl'
 execute 'create/reset database' do

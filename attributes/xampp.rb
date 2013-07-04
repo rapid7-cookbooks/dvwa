@@ -9,5 +9,5 @@
 
 if node.run_list.include?('dvwa::xampp')
   include_attribute 'xampp'
-  default[:dvwa][:dir] = "#{node[:xampp][:dir]}/lampp/htdocs/dvwa"
+  default[:dvwa][:dir] = "#{node[:xampp][:dir]}/lampp/htdocs"
 end
