@@ -12,14 +12,14 @@ include_recipe 'xampp'
 package 'unzip'
 remote_file "#{Chef::Config[:file_cache_path]}/#{node[:dvwa][:zip_name]}" do
   source node[:dvwa][:url]
-  only_if { node[:dvwa][:overwrite] || !Dir.exists?(node[:dvwa][:dir]) }
+  only_if { node[:dvwa][:overwrite] || !Dir.exists?("#{node[:dvwa][:dir]}/dvwa") }
 end
 
 zip_path = "#{Chef::Config[:file_cache_path]}/#{node[:dvwa][:zip_name]}"
 
 execute "unzip #{node[:dvwa][:zip_name]}" do
   command "unzip -q #{Chef::Config[:file_cache_path]}/#{node[:dvwa][:zip_name]} -d #{node[:dvwa][:dir]}"
-  only_if { node[:dvwa][:overwrite] || !Dir.exists?(node[:dvwa][:dir])  }
+  only_if { node[:dvwa][:overwrite] || !Dir.exists?("#{node[:dvwa][:dir]}/dvwa")  }
 end
 
 file zip_path do
