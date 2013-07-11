@@ -10,4 +10,5 @@
 if node.run_list.include?('dvwa::xampp')
   include_attribute 'xampp'
   default[:dvwa][:dir] = "#{node[:xampp][:dir]}/lampp/htdocs"
+  node.set[:xampp][:security_policies] = []
 end
