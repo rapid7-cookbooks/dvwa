@@ -7,14 +7,6 @@
 # All Rights Reserved - Do Not Redistribute
 #
 
-node.set[:xampp][:security_policies] =	[
-                                          'Order deny,allow',
-                                          'Allow from all',
-                                          'Allow from ::1 127.0.0.0/8 \
-                                          fc00::/7 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16 \
-                                          fe80::/10 169.254.0.0/16',
-                                          'ErrorDocument 403 /error/XAMPP_FORBIDDEN.html.var'
-                                        ]
 include_recipe 'xampp'
 
 package 'unzip'
