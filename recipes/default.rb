@@ -7,7 +7,8 @@
 # All Rights Reserved - Do Not Redistribute
 #
 
-case node[:dvwa][:flavor]
+# OPTIMIZE
+case "#{node[:dvwa][:flavor]}".to_sym
 when :xampp
   include_recipe 'dvwa::xampp'
 when :apache2, :server, :standalone

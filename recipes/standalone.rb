@@ -20,7 +20,6 @@ apache_site 'default'
 apache_site 'default-ssl'
 
 # Install MySQL server
-include_recipe 'mysql'
 include_recipe 'mysql::server'
 
 package 'php5-mysql'
@@ -43,7 +42,12 @@ bash 'install DVWA from zip' do
   notifies :restart, 'service[apache2]', :immediately
 end
 
-template "#{node[:dvwa][:dir]}/dvwa/config/config.inc.php"
+template "#{node[:dvwa][:dir]}/dvwa/config/config.inc.php" do
+  variables :database_flavor => node[:dvwa][:database_flavor],
+            :db => node[:dvwa][:db],
+            :default_security_level => node[:dvwa][:default_security_level],
+            :recaptcha => node[:dvwa][:recaptcha]
+end
 
 package 'curl'
 execute 'create/reset database' do
