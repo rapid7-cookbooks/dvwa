@@ -1,0 +1,26 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure('2') do |config|
+  config.vm.define :standalone do |standalone_config|
+    standalone_config.vm.hostname = 'dvwa-standalone'
+    standalone_config.vm.network :private_network, ip: '33.33.33.10'
+    standalone_config.vm.provision :chef_solo do |chef|
+      chef.json = {
+        apache2: {
+          mod_ssl: {
+            cipher_suite: 'LOW:HIGH:MEDIUM:+EXP:+SHA1:+MD5:+LOW:+HIGH:+MEDIUM',
+            protocol: '+all'
+          }
+        },
+        mysql: {
+          bind_address: '127.0.0.1',
+          server_debian_password: 'msfadmin',
+          server_root_password: 'msfadmin',
+          server_repl_password: 'msfadmin'
+        },
+      }
+      chef.run_list = ['recipe[dvwa::standalone]']
+    end
+  end
+end
