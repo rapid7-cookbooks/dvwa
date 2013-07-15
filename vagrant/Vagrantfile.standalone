@@ -16,8 +16,8 @@ Vagrant.configure('2') do |config|
         mysql: {
           bind_address: '127.0.0.1',
           server_debian_password: 'msfadmin',
+          server_repl_password: 'msfadmin',
           server_root_password: 'msfadmin',
-          server_repl_password: 'msfadmin'
         },
       }
       chef.run_list = ['recipe[dvwa::standalone]']

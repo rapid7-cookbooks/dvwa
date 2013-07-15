@@ -1,5 +1,6 @@
 .vagrant
 Berksfile.lock
+Gemfile.lock
 *~
 *#
 .#*
@@ -8,9 +9,7 @@ Berksfile.lock
 *.un~
 vendor
 /cookbooks
-
-# Bundler
-Gemfile.lock
 bin/*
 .bundle/*
-
+.kitchen/
+.kitchen.local.yml

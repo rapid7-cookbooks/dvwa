@@ -8,7 +8,7 @@
 #
 
 # Ensure apt is up to date
-include_recipe 'apt'
+include_recipe 'apt' if platform_family?('debian')
 
 # Install Apache2
 include_recipe 'apache2'
