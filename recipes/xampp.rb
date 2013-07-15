@@ -31,7 +31,12 @@ xampp_service 'apache' do
   action :restart
 end
 
-template "#{node[:dvwa][:dir]}/dvwa/config/config.inc.php"
+template "#{node[:dvwa][:dir]}/dvwa/config/config.inc.php" do
+  variables :database_flavor => node[:dvwa][:database_flavor],
+            :db => node[:dvwa][:db],
+            :default_security_level => node[:dvwa][:default_security_level],
+            :recaptcha => node[:dvwa][:recaptcha]
+end
 
 package 'curl'
 execute 'create/reset database' do
