@@ -8,25 +8,11 @@ platforms:
   driver_config:
     box: opscode-ubuntu-12.04
     box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box
-# NOTE: CentOS/RHEL support was broken. Uncomment once the XAMPP cookbook is
-# fixed.
-# - name: centos-6.4
-#  driver_config:
-#    box: opscode-centos-6.4
-#    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box
 
 suites:
 - name: standalone
   run_list:
     - recipe[dvwa::standalone]
-  attributes:
-    mysql:
-      server_debian_password: msfadmin
-      server_repl_password: msfadmin
-      server_root_password: msfadmin
-- name: xampp
-  run_list:
-    - recipe[dvwa::xampp]
   attributes:
     mysql:
       server_debian_password: msfadmin
