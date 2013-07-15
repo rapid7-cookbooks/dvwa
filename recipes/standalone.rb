@@ -22,9 +22,7 @@ apache_site 'default-ssl'
 # Install MySQL server
 include_recipe 'mysql::server'
 
-package 'php5-mysql'
-
-
+package 'php5-mysql' # TODO: Determine if this is necessary
 
 # Download DVWA as an archive
 remote_file "#{Chef::Config[:file_cache_path]}/#{node[:dvwa][:zip_name]}" do
@@ -39,6 +37,7 @@ bash 'install DVWA from zip' do
     unzip -q -o #{Chef::Config[:file_cache_path]}/#{node[:dvwa][:zip_name]} -d #{node[:dvwa][:dir]}
   eos
 
+  # OPTIMIZE: Is it necessary to restart Apache2 immediately?
   notifies :restart, 'service[apache2]', :immediately
 end
 
