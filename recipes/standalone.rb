@@ -48,6 +48,10 @@ template "#{node[:dvwa][:dir]}/dvwa/config/config.inc.php" do
             :recaptcha => node[:dvwa][:recaptcha]
 end
 
+file '/var/www/index.html' do
+  action :delete
+end
+
 package 'curl'
 execute 'create/reset database' do
   command "curl --data 'create_db=Create+%2F+Reset+Database' http://0.0.0.0/dvwa/setup.php# --cookie PHPSESSID=1"
