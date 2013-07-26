@@ -35,10 +35,7 @@ vagrant up xampp # or you can run standalone to install without XAMPP
 
 ## Usage
 ### dvwa::default
-Includes the dvwa::server recipe.
-
-### dvwa::server
-Installs DVWA on a web server. Select the install method by setting node[:dvwa][:flavor] to :xampp (default) or :standalone.
+Installs DVWA on a web server. Select the install method by explicitly calling the following recipes or by setting node[:dvwa][:flavor] to :xampp (default) or :standalone.
 
 ### dvwa::xampp
 Includes the XAMPP recipe and unarchives DVWA inside of /opt/lampp/htdocs.
