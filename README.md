@@ -6,6 +6,8 @@ To run in a Vagrant Environment, install [VirtualBox here](https://www.virtualbo
 [install Vagrant here](http://downloads.vagrantup.com).
 Run the following commands to get started with this cookbook:
 ```ruby
+git clone https://github.com/rapid7-cookbooks/dvwa
+cd dvwa
 bundle install
 vagrant plugin install bindler
 vagrant bindler setup # Only needed once
