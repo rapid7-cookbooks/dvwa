@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 # TODO: Utilize groups
 gem 'berkshelf'
-gem 'bindler'
 gem 'chefspec', '~> 1.3.1'
 gem 'foodcritic'
 gem 'kitchen-vagrant', :group => :integration

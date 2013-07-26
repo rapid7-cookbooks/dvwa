@@ -2,11 +2,15 @@
 ## Description
 Installs Damn Vulnerable Web Application to a XAMPP installation (recommended by the DVWA documentation).
 
+To run in a Vagrant Environment, install [VirtualBox here](https://www.virtualbox.org/wiki/Downloads) and then
+[install Vagrant here](http://downloads.vagrantup.com).
 Run the following commands to get started with this cookbook:
 ```ruby
 bundle install
-vagrant plugin install vagrant-berkshelf
-vagrant up
+vagrant plugin install bindler
+vagrant bindler setup # Only needed once
+vagrant plugin bundle
+vagrant up xampp # or you can run standalone to install without XAMPP
 ```
 
 ## Cookbooks
