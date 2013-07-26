@@ -15,6 +15,8 @@ vagrant plugin bundle
 vagrant up xampp # or you can run standalone to install without XAMPP
 ```
 
+When finished using the Vagrant instance simply run `vagrant destroy -f xampp`.
+
 ## Cookbooks
 * apache2
 * mysql
